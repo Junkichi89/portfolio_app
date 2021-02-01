@@ -1,4 +1,4 @@
-# the-saying-app
+# 格言アプリ
 
 ## Build Setup
 
