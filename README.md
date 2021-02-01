@@ -1,5 +1,5 @@
-# 格言アプリ
-
+# 格言アプリ  
+好きな時に、自分の好きな格言を見れたり、人生を豊にする言葉に出会えるアプリです。  
 ## アプリの作成背景
 
 海外で生活していた時、好きなビジネス書の作家の方がまとめた格言、名言集を持ち歩いていた。
@@ -12,14 +12,6 @@
 
 ## 使用技術
 
-| Left align | Right align | Center align |
-|:-----------|------------:|:------------:|
-| This       |        This |     This     |
-| column     |      column |    column    |
-| will       |        will |     will     |
-| be         |          be |      be      |
-| left       |       right |    center    |
-| aligned    |     aligned |   aligned    |
 
 
 
