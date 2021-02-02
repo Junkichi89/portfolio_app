@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row justify="center">
-      <v-col sm="12" md="5">
+      <v-col sm="8" md="8">
         <h2 class="text-center subtitle-1 font-weight-bold mb-2">
           メールアドレスでログイン
         </h2>
@@ -52,7 +52,6 @@
                         :disabled="!login_valid"
                         color="blue darken-3"
                         class="my-4 white--text"
-                        @click="email_login"
                       >
                         ログイン
                       </v-btn>
@@ -67,3 +66,19 @@
     </v-row>
   </v-container>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      tab: null,
+      login_valid: true,
+      login_email: '',
+      login_password: '',
+      show_loginpassword: false,
+      loginErrorMsg: '',
+      socialLoginErrorMsg: '',
+    }
+  },
+}
+</script>

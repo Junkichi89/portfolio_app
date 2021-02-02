@@ -88,3 +88,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+#参考リファレンス
+*.text
