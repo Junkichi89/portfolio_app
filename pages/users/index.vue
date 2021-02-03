@@ -1,49 +1,18 @@
 <template>
   <v-container>
-    <v-row id="top-page" justify="center" align="center">
-      <v-col>
-        <v-btn class="ma-2" outlined color="indigo"> ユーザー名 </v-btn>
+    <v-row id="top-page" justify="space-between">
+      <v-col cols="8">
+        <v-btn class="ma-2 black--text" color="blue"> 格言一覧ページ </v-btn>
         <!-- //Todo:clickでユーザー情報を確認できるページ移動を追加 -->
       </v-col>
-      <v-col>
-        <v-card-text>
-          <v-autocomplete
-            v-model="model"
-            :items="items"
-            :loading="isLoading"
-            :search-input.sync="search"
-            color="white"
-            hide-no-data
-            hide-selected
-            item-text="Description"
-            item-value="API"
-            label="Public APIs"
-            placeholder="Start typing to Search"
-            prepend-icon="mdi-database-search"
-            return-object
-          ></v-autocomplete>
-        </v-card-text>
+      <v-col cols="3" class="">
+        <v-btn class="ma-2" color="indigo"> 新規格言作成 </v-btn>
+        <!-- //Todo:clickでユーザー情報を確認できるページ移動を追加 -->
+
+        <v-btn class="ma-2 black--text" color="yellow"> 戻る </v-btn>
+        <!-- //Todo:clickでユーザー情報を確認できるページ移動を追加 -->
       </v-col>
     </v-row>
-    <v-card elevation="10" shaped>
-      <v-card-title class="text-h4 ma-5">＜今日の格言＞</v-card-title>
-      <v-card-subtitle class="text-center text-h5 my-10"
-        >今日の格言が表示される</v-card-subtitle
-      >
-      <v-row>
-        <v-col class="d-flex justify-end">
-          <v-btn class="mx-5" color="blue-grey"
-            >いいね！<v-icon>mdi-thumb-up</v-icon></v-btn
-          >
-          <v-btn class="mx-5"><v-icon>mdi-information-variant</v-icon></v-btn>
-        </v-col>
-      </v-row>
-    </v-card>
-    <div class="d-flex">
-      <v-btn class="my-12 text-h5 mx-auto" width="250" height="50"
-        >格言一覧</v-btn
-      >
-    </div>
 
     <v-row>
       <!-- //Todo:最終的には、v-forでリストで表示するようにする -->
