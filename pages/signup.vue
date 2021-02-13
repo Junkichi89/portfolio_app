@@ -1,12 +1,12 @@
 <template>
   <v-container>
     <v-row justify="center">
-      <v-col sm="12" md="5">
+      <v-col sm="8" md="8">
         <h2 class="text-center subtitle-1 font-weight-bold mb-2">
           メールアドレスで登録
         </h2>
         <v-row justify="center">
-          <v-col sm="8">
+          <v-col>
             <v-tabs
               v-model="tab"
               background-color="transparent"
@@ -48,7 +48,7 @@
             </v-row>
             <v-divider class="my-8" />
             <v-row>
-              <v-col sm="12">
+              <v-col>
                 <h2 class="text-center subtitle-1 font-weight-bold mb-2">
                   その他のアカウントでログイン
                 </h2>
