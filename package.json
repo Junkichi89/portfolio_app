@@ -11,6 +11,7 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore . --fix"
   },
   "dependencies": {
+    "@mdi/js": "^5.9.55",
     "core-js": "^3.8.2",
     "nuxt": "^2.14.12"
   },

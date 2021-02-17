@@ -2,7 +2,9 @@
   <v-container>
     <v-row id="top-page" justify="space-between">
       <v-col cols="8">
-        <v-btn class="ma-2 black--text" color="blue"> ユーザー名 </v-btn>
+        <v-btn class="ma-2 black--text" color="blue">
+          選択されたユーザー名
+        </v-btn>
         <!-- //TODO:clickでユーザー情報を確認できるページ移動を追加 -->
       </v-col>
       <v-col cols="3" class="">
