@@ -2,8 +2,11 @@
   <v-container>
     <v-row id="top-page" justify="center" align="center">
       <v-col>
-        <v-btn class="ma-2" outlined color="indigo"> ユーザー名 </v-btn>
-        <!-- //Todo:clickでユーザー情報を確認できるページ移動を追加 -->
+        <!-- //TODO:リンクの変更 -->
+        <v-btn class="ma-2" outlined color="indigo" nuxt to="/users/_id">
+          ユーザー名
+        </v-btn>
+        <!-- //TODO:clickでユーザー情報を確認できるページ移動を追加 -->
       </v-col>
       <v-col>
         <v-card-text>
