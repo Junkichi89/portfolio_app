@@ -16,6 +16,7 @@
             <v-row>
               <v-col>
                 <v-text-field
+                  v-model="content"
                   label="新しい格言*"
                   hint="文章を入力してください"
                   persistent-hint
@@ -24,14 +25,16 @@
               </v-col>
               <v-col cols="12">
                 <v-text-field
+                  v-model="author"
                   label="格言に関する人物の名前*"
                   required
                 ></v-text-field>
               </v-col>
               <v-col cols="12">
                 <v-textarea
+                  v-model="description"
                   label="詳細な内容*"
-                  type="password"
+                  type="content"
                   required
                 ></v-textarea>
               </v-col>
@@ -43,9 +46,7 @@
           <v-btn color="blue darken-1" text @click="dialog = false">
             Close
           </v-btn>
-          <v-btn color="blue darken-1" text @click="dialog = false">
-            Save
-          </v-btn>
+          <v-btn color="blue darken-1" text @click="newSaying"> Save </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -55,8 +56,19 @@
 <script>
 export default {
   name: 'CreateSaying',
-  data: () => ({
-    dialog: false,
-  }),
+  data() {
+    return {
+      author: '',
+      content: '',
+      description: '',
+      dialog: false,
+    }
+  },
+  methods: {
+    newSaying() {
+      console.log('hello')
+      this.dialog = false
+    },
+  },
 }
 </script>
