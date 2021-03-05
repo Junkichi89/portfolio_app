@@ -13,14 +13,15 @@ export const actions = {
   init: firestoreAction(({ bindFirestoreRef }) => {
     bindFirestoreRef('users', usersRef)
   }),
-  add: firestoreAction((context, name) => {
-    if (name.trim()) {
+  add: firestoreAction((context, title) => {
+    if (title.trim()) {
       usersRef.add({
-        name: '',
+        name: title,
         done: false,
-        created: firebase.firestore.FieldValue.serverTimestamp(),
       })
     }
+    console.log('successfully added')
+    console.log(title)
   }),
   remove: firestoreAction((context, id) => {
     usersRef.doc(id).delete()
