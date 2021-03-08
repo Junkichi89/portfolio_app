@@ -18,15 +18,16 @@ export const state = () => ({
 export const actions = {
   async signUp(context, newUser) {
     console.log(newUser)
-    await auth
-      .createUserWithEmailAndPassword(newUser.email, newUser.password)
-      .then((user) => {
-        console.log('signed in')
-      })
-      .catch((error) => {
-        console.log(error)
-        // var errorCode = error.code
-        // var errorMessage = error.message
-      })
+    try {
+      const user = await auth.createUserWithEmailAndPassword(
+        newUser.email,
+        newUser.password
+      )
+      console.log('signed in', user)
+    } catch (error) {
+      console.log(error)
+    }
+    // var errorCode = error.code
+    // var errorMessage = error.message
   },
 }
