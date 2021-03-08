@@ -23,14 +23,14 @@
                   <v-card-text class="pa-0">
                     <v-form lazy-validation>
                       <v-text-field
-                        v-model="newUser.email"
+                        v-model="email"
                         label="メールアドレス"
                         required
                         validate-on-blur
                       />
                       <v-text-field
                         ref="register_password"
-                        v-model="newUser.password"
+                        v-model="password"
                         label="パスワード"
                         required
                         validate-on-blur
@@ -43,7 +43,7 @@
                       <v-btn
                         color="blue darken-3"
                         class="mr-4 white--text"
-                        @submit="signUp"
+                        @click="signUp"
                       >
                         登録
                       </v-btn>
@@ -73,10 +73,8 @@ export default {
   data() {
     return {
       tab: null,
-      newUser: {
-        password: '',
-        email: '',
-      },
+      password: '',
+      email: '',
       emailRules: [
         (v) => {
           if (v) {
@@ -107,11 +105,18 @@ export default {
         },
       ],
       show_registerPassword: false,
+      registerErrorMsg: 'Sorry',
     }
   },
   methods: {
-    signUp(newUser) {
+    signUp() {
+      const newUser = {
+        email: this.email,
+        password: this.password,
+      }
+
       this.$store.dispatch('auth/signUp', newUser)
+      console.log('successfully signed in', newUser)
     },
   },
 }

@@ -37,8 +37,11 @@
       </v-btn>
       <v-toolbar-title v-text="title" />
       <v-spacer />
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>mdi-menu</v-icon>
+      <v-btn icon to="/signin">
+        <v-icon>mdi-account-circle-outline</v-icon>
+      </v-btn>
+      <v-btn icon to="/signup">
+        <v-icon>mdi-account-plus-outline</v-icon>
       </v-btn>
     </v-app-bar>
     <v-main>
@@ -46,18 +49,8 @@
         <nuxt />
       </v-container>
     </v-main>
-    <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light> mdi-repeat </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
     <v-footer :absolute="!fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span>&copy; {{ new Date().getFullYear() }} </span>
     </v-footer>
   </v-app>
 </template>
@@ -69,6 +62,10 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
+      miniVariant: false,
+      right: true,
+      rightDrawer: false,
+      title: 'Sayings App (格言アプリ）',
       items: [
         {
           icon: 'mdi-apps',
@@ -76,15 +73,16 @@ export default {
           to: '/',
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire',
+          icon: 'mdi-account-box-multiple',
+          title: 'Users',
+          to: '/users',
+        },
+        {
+          icon: 'mdi-clipboard-text-multiple-outline',
+          title: 'Sayings',
+          to: '/sayings',
         },
       ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js',
     }
   },
 }

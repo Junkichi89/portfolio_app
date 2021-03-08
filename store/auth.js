@@ -16,7 +16,8 @@ export const state = () => ({
 })
 
 export const actions = {
-  async signup(newUser) {
+  async signUp(context, newUser) {
+    console.log(newUser)
     await auth
       .createUserWithEmailAndPassword(newUser.email, newUser.password)
       .then((user) => {

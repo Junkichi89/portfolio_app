@@ -4,7 +4,7 @@
     <InputControll />
     <CreateSaying class="mb-10"></CreateSaying>
     <DetailSaying></DetailSaying>
-    <input type="text" placeholder="name" v-model="name" />
+    <input v-model="name" type="text" placeholder="name" />
     <button @click="add">送信</button>
   </div>
 </template>

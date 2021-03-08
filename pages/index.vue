@@ -43,7 +43,7 @@
       </v-row>
     </v-card>
     <div class="d-flex">
-      <v-btn class="my-12 text-h5 mx-auto" width="250" height="50"
+      <v-btn class="my-12 text-h5 mx-auto" width="250" height="50" to="/sayings"
         >格言一覧</v-btn
       >
     </div>
