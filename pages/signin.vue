@@ -21,20 +21,21 @@
             <v-row>
               <v-col sm="12">
                 <v-card flat>
-                  <v-card-text class="pa-0">
+                  <v-card-text class="py-10 pb-5 px-5">
                     <v-form
                       ref="login_form"
                       v-model="login_valid"
                       lazy-validation
                     >
                       <v-text-field
-                        v-model="login_email"
+                        v-model="email"
                         label="メールアドレス"
                         required
+                        :rules="emailRules"
                       />
 
                       <v-text-field
-                        v-model="login_password"
+                        v-model="password"
                         label="パスワード"
                         required
                         :append-icon="
@@ -51,7 +52,8 @@
                       <v-btn
                         :disabled="!login_valid"
                         color="blue darken-3"
-                        class="my-4 white--text"
+                        class="my-4 white--text d-flex mx-auto"
+                        @click="signin"
                       >
                         ログイン
                       </v-btn>
@@ -73,12 +75,39 @@ export default {
     return {
       tab: null,
       login_valid: true,
-      login_email: '',
-      login_password: '',
+      email: '',
+      password: '',
       show_loginpassword: false,
       loginErrorMsg: '',
       socialLoginErrorMsg: '',
+      emailRules: [
+        (v) => {
+          if (v) {
+            return (
+              /.+@.+\..+/.test(v) || '有効なメールアドレスを入力してください'
+            )
+          } else {
+            return true
+          }
+        },
+      ],
     }
+  },
+  methods: {
+    signin() {
+      if (this.email && this.password) {
+        try {
+          const signInUser = {
+            email: this.email,
+            password: this.password,
+          }
+          this.$store.dispatch('signInWithEmail', signInUser)
+          this.$router.push('/')
+        } catch (err) {
+          // console.log(err)
+        }
+      }
+    },
   },
 }
 </script>

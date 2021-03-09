@@ -20,14 +20,27 @@
             <v-row>
               <v-col sm="12">
                 <v-card flat>
-                  <v-card-text class="pa-0">
-                    <v-form lazy-validation v-model="register_valid">
+                  <v-card-text class="py-10">
+                    <v-form
+                      lazy-validation
+                      v-model="register_valid"
+                      ref="register_form"
+                    >
+                      <v-text-field
+                        v-model="nickname"
+                        label="ユーザー名"
+                        :rules="nicknameRules"
+                        required
+                        validate-on-blur
+                        class="px-10"
+                      />
                       <v-text-field
                         v-model="email"
                         label="メールアドレス"
                         :rules="emailRules"
                         required
                         validate-on-blur
+                        class="px-10"
                       />
                       <v-text-field
                         ref="register_password"
@@ -43,6 +56,7 @@
                         @click:append="
                           show_registerPassword = !show_registerPassword
                         "
+                        class="px-10"
                       >
                         <template #progress>
                           <v-progress-linear
@@ -66,13 +80,14 @@
                         @click:append="
                           show_registerPassword = !show_registerPassword
                         "
+                        class="px-10"
                       />
                       <v-alert v-if="registerErrorMsg" dense text type="error">
                         {{ registerErrorMsg }}
                       </v-alert>
                       <v-btn
                         color="blue darken-3"
-                        class="mr-4 white--text"
+                        class="d-felx mx-auto white--text"
                         @click="signUp"
                       >
                         登録
@@ -83,7 +98,7 @@
               </v-col>
             </v-row>
             <v-divider class="my-8" />
-            <v-row>
+            <v-row class="d-none">
               <v-col>
                 <h2 class="text-center subtitle-1 font-weight-bold mb-2">
                   その他のアカウントでログイン
@@ -102,11 +117,16 @@ import zxcvbn from 'zxcvbn'
 export default {
   data() {
     return {
-      register_valid: true,
       tab: null,
+      register_valid: true,
       register_password: '',
       register_password_again: '',
+      nickname: '',
       email: '',
+      nicknameRules: [
+        (v) => !!v || 'Name is required',
+        (v) => (v && v.length <= 10) || 'Name must be less than 10 characters',
+      ],
       emailRules: [
         (v) => {
           if (v) {
@@ -137,7 +157,7 @@ export default {
         },
       ],
       show_registerPassword: false,
-      registerErrorMsg: 'Sorry',
+      registerErrorMsg: '',
     }
   },
   computed: {
@@ -177,13 +197,18 @@ export default {
   },
   methods: {
     signUp() {
-      const newUser = {
-        email: this.email,
-        password: this.register_password,
-      }
+      // バリデーションに問題がなければユーザーを登録できる
 
-      this.$store.dispatch('auth/signUp', newUser)
-      console.log('successfully signed in', newUser)
+      if (this.$refs.register_form.validate()) {
+        const newUser = {
+          email: this.email,
+          password: this.register_password,
+          nickname: this.nickname,
+        }
+        this.$store.dispatch('auth/signUp', newUser)
+        console.log('successfully signed in', newUser)
+        this.$router.push('/')
+      }
     },
   },
 }

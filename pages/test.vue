@@ -15,13 +15,7 @@ export default {
       name: '',
     }
   },
-  created() {
-    this.$store.dispatch('saying/init')
-  },
-  methods: {
-    add() {
-      this.$store.dispatch('saying/add', this.name)
-    },
-  },
+  created() {},
+  methods: {},
 }
 </script>

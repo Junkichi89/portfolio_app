@@ -1,14 +1,13 @@
 import firebase from '~/plugins/firebase'
 
-// const db = firebase.firestore()
-const auth = firebase.auth()
-// const usersRef = db.collection('users')
+const db = firebase.firestore()
+const usersRef = db.collection('users')
 
-// ログイン情報の保持
 // 新規登録
 /**
  * signupからデータを受け取り、firebaseでユーザー登録
  * 登録データを反映させる。
+ * データの更新はできている
  */
 
 export const state = () => ({
@@ -16,13 +15,31 @@ export const state = () => ({
 })
 
 export const actions = {
-  async signUp(context, newUser) {
-    console.log(newUser)
+  async signUp({ commit, dispatch }, newUser) {
     try {
-      const user = await auth.createUserWithEmailAndPassword(
-        newUser.email,
-        newUser.password
-      )
+      await firebase
+        .auth()
+        .createUserWithEmailAndPassword(newUser.email, newUser.password)
+      const user = await firebase.auth().currentUser
+      await user.updateProfile({
+        displayName: newUser.nickname,
+      })
+      usersRef.doc(user.uid).set({
+        nickname: user.displayName,
+        email: user.email,
+      })
+    } catch (error) {
+      console.log(error)
+    }
+    // var errorCode = error.code
+    // var errorMessage = error.message
+  },
+  async signInWithEmail(context, signInUser) {
+    console.log(signInUser)
+    try {
+      const user = await firebase
+        .auth()
+        .signInWithEmailAndPassword(signInUser.email, signInUser.password)
       console.log('signed in', user)
     } catch (error) {
       console.log(error)
