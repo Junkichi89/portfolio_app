@@ -95,14 +95,13 @@ export default {
   },
   methods: {
     signin() {
-      if (this.email && this.password) {
+      if (this.email !== null && this.password !== null) {
         try {
           const signInUser = {
             email: this.email,
             password: this.password,
           }
           this.$store.dispatch('signInWithEmail', signInUser)
-          this.$router.push('/')
         } catch (err) {
           // console.log(err)
         }

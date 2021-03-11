@@ -14,6 +14,8 @@ export const state = () => ({
   users: [],
 })
 
+export const mutations = {}
+
 export const actions = {
   async signUp({ commit, dispatch }, newUser) {
     try {
@@ -24,10 +26,12 @@ export const actions = {
       await user.updateProfile({
         displayName: newUser.nickname,
       })
-      usersRef.doc(user.uid).set({
+      await usersRef.doc(user.uid).set({
         nickname: user.displayName,
         email: user.email,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       })
+      this.$router.push('/')
     } catch (error) {
       console.log(error)
     }
@@ -41,10 +45,17 @@ export const actions = {
         .auth()
         .signInWithEmailAndPassword(signInUser.email, signInUser.password)
       console.log('signed in', user)
+      this.$router.push('/')
     } catch (error) {
       console.log(error)
     }
     // var errorCode = error.code
     // var errorMessage = error.message
   },
+
+  getUser(commit, user) {
+    console.log(user)
+  },
 }
+
+export const getters = {}

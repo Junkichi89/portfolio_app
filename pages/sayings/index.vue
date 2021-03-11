@@ -6,10 +6,7 @@
         <!-- //TODO:clickでユーザー情報を確認できるページ移動を追加 -->
       </v-col>
       <v-col cols="3" class="">
-        <v-btn class="ma-2" color="indigo"> 新規格言作成 </v-btn>
-        <!-- //TODO:clickでユーザー情報を確認できるページ移動を追加 -->
-
-        <v-btn class="ma-2 black--text" color="yellow"> 戻る </v-btn>
+        <CreateSaying class="ma-2 black--text"></CreateSaying>
         <!-- //TODO:clickでユーザー情報を確認できるページ移動を追加 -->
       </v-col>
     </v-row>

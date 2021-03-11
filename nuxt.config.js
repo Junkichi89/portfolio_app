@@ -5,7 +5,7 @@ export default {
   ssr: false,
 
   head: {
-    titleTemplate: '%s - the-saying-app',
+    titleTemplate: '%s - words make people stronger',
     title: 'the-saying-app',
     htmlAttrs: {
       lang: 'ja',
@@ -40,6 +40,9 @@ export default {
   ],
   eslint: {
     cache: false,
+  },
+  router: {
+    middleware: ['authenticated']
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules

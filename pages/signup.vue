@@ -207,7 +207,6 @@ export default {
         }
         this.$store.dispatch('auth/signUp', newUser)
         console.log('successfully signed in', newUser)
-        this.$router.push('/')
       }
     },
   },
